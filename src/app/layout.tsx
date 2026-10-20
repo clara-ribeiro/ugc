@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter, JetBrains_Mono, Lora } from "next/font/google";
 import "./globals.css";
 import { landing } from "@/content/landing";
@@ -92,6 +93,7 @@ export default function RootLayout({
         className={`${inter.variable} ${lora.variable} ${jetbrains.variable}`}
       >
         <StitchesRegistry>{children}</StitchesRegistry>
+        <Analytics />
       </body>
     </html>
   );
