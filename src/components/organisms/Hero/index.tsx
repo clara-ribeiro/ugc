@@ -45,9 +45,9 @@ export default function Hero() {
             <Image
               src={hero.photoSrc}
               alt={hero.photoAlt}
-              width={800}
-              height={1000}
-              sizes="(max-width: 767px) 100vw, 400px"
+              fill
+              sizes="(max-width: 767px) min(100vw, 22rem), (max-width: 1023px) 22rem, 25rem"
+              quality={95}
               priority
             />
           </PhotoFrame>

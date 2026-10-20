@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import type { FaqItem as FaqItemContent } from "@/content/landing";
 import { Answer, Item, Question } from "./styles";
 
@@ -24,7 +24,7 @@ export default function FaqItem({ item, defaultOpen = false }: FaqItemProps) {
       }}
     >
       <Question
-        onClick={(event) => {
+        onClick={(event: MouseEvent<HTMLElement>) => {
           event.preventDefault();
         }}
       >

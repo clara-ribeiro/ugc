@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
-import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import sharp from "sharp";
 import { landing } from "@/content/landing";
 
 export const alt = landing.site.title;
@@ -11,8 +11,10 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
-  const photo = await readFile(join(process.cwd(), "public/images/clara.jpg"));
-  const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
+  const photo = await sharp(join(process.cwd(), "public/images/clara.webp"))
+    .png()
+    .toBuffer();
+  const photoSrc = `data:image/png;base64,${photo.toString("base64")}`;
 
   return new ImageResponse(
     (

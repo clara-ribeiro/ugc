@@ -140,10 +140,8 @@ export const PhotoFrame = styled("div", {
     aspectRatio: "4 / 5",
   },
   "& img": {
-    width: "100%",
-    height: "100%",
     objectFit: "cover",
-    objectPosition: "center",
+    objectPosition: "center 18%",
   },
 });
 

@@ -130,7 +130,7 @@ export const landing = {
     secondaryCta: "Explore the archive",
     photoAlt:
       "Portrait of Clara Sousa, Brazilian software engineer and tech UGC creator",
-    photoSrc: "/images/clara.jpg",
+    photoSrc: "/images/clara.webp",
     proofLabel: "Proof of work",
     credentials: [
       { id: "english", label: "Fluent English", icon: "check" },
