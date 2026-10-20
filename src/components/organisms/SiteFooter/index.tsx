@@ -1,5 +1,6 @@
+import WorkCredits from "@/components/molecules/WorkCredits";
 import { landing, mailtoHref } from "@/content/landing";
-import { Copyright, Description, Email, Inner, Quote, Root } from "./styles";
+import { Copyright, Credits, Description, Email, Inner, Quote, Root } from "./styles";
 
 export default function SiteFooter() {
   const footer = landing.footer;
@@ -12,8 +13,11 @@ export default function SiteFooter() {
           {landing.person.name}, {landing.person.jobTitle}. {footer.description}
         </Description>
         <Email href={mailtoHref()}>{landing.site.contactEmail}</Email>
-        <Copyright>{footer.copyright}</Copyright>
       </Inner>
+      <Credits>
+        <WorkCredits />
+      </Credits>
+      <Copyright>{footer.copyright}</Copyright>
     </Root>
   );
 }

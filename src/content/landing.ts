@@ -44,6 +44,18 @@ export type FaqItem = {
   answer: string;
 };
 
+export type CredentialItem = {
+  id: string;
+  label: string;
+  icon: "check" | "camera";
+};
+
+export type WorkItem = {
+  label: string;
+  href: string;
+  tone: "blue" | "rose";
+};
+
 const CONTACT_EMAIL = "clararibeiro.ugc@gmail.com";
 
 export const landing = {
@@ -119,8 +131,20 @@ export const landing = {
     photoAlt:
       "Portrait of Clara Sousa, Brazilian software engineer and tech UGC creator",
     photoSrc: "/images/clara.jpg",
-    credentials: ["Software Engineer", "Fluent English", "Studio Lighting & 4K"],
+    proofLabel: "Proof of work",
+    credentials: [
+      { id: "english", label: "Fluent English", icon: "check" },
+      { id: "studio", label: "4K Studio Setup", icon: "camera" },
+    ] satisfies CredentialItem[],
   },
+  works: [
+    {
+      label: "devXperience",
+      href: "https://www.devxperience.com.br/",
+      tone: "blue",
+    },
+    { label: "Clamari", href: "https://www.clamari.com.br/", tone: "rose" },
+  ] satisfies WorkItem[],
   about: {
     id: "about",
     titleId: "about-heading",

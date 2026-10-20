@@ -36,6 +36,12 @@ export function buildLandingJsonLd(): JsonLd {
     ],
     knowsLanguage: [...landing.person.languages],
     nationality: landing.person.nationality,
+    sameAs: landing.works.map((work) => work.href),
+    affiliation: landing.works.map((work) => ({
+      "@type": "Organization",
+      name: work.label,
+      url: work.href,
+    })),
   });
 
   const offers = landing.services.packages.map((item) =>

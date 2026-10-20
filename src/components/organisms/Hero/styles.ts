@@ -5,11 +5,11 @@ export const Section = styled("header", {
   margin: "0 auto",
   px: "$md",
   paddingTop: "$2xl",
-  paddingBottom: "$3xl",
+  paddingBottom: "$xl",
   "@md": {
     px: "$lg",
     paddingTop: "$3xl",
-    paddingBottom: "$4xl",
+    paddingBottom: "$xl",
   },
 });
 
@@ -111,17 +111,6 @@ export const PhotoFrame = styled("div", {
 
 export const Credentials = styled("div", {
   marginTop: "$3xl",
-  display: "flex",
-  alignItems: "center",
-  gap: "$lg",
-  flexWrap: "wrap",
-  color: "$loContrast",
-  fontFamily: "$mono",
-  fontSize: "$caption",
   borderTop: "1px solid $border",
   paddingTop: "$xl",
-});
-
-export const Divider = styled("span", {
-  color: "$loContrast",
 });

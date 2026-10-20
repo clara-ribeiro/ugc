@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Button from "@/components/atoms/Button";
 import StatusBadge from "@/components/atoms/StatusBadge";
+import WorkCredits from "@/components/molecules/WorkCredits";
 import { landing, mailtoHref } from "@/content/landing";
 import {
   Actions,
   Copy,
   Credentials,
   Description,
-  Divider,
   Emphasis,
   Layout,
   PhotoFrame,
@@ -49,16 +49,7 @@ export default function Hero() {
         </PhotoWrap>
       </Layout>
       <Credentials>
-        {hero.credentials.flatMap((item, index) =>
-          index === 0
-            ? [<span key={item}>{item}</span>]
-            : [
-                <Divider key={`${item}-divider`} aria-hidden>
-                  /
-                </Divider>,
-                <span key={item}>{item}</span>,
-              ],
-        )}
+        <WorkCredits />
       </Credentials>
     </Section>
   );

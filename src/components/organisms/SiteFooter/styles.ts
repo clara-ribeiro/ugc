@@ -32,6 +32,14 @@ export const Description = styled("p", {
   margin: "0 auto $xl",
 });
 
+export const Credits = styled("div", {
+  maxWidth: "$containerContent",
+  margin: "0 auto $xl",
+  paddingTop: "$xl",
+  borderTop: "1px solid $border",
+  textAlign: "left",
+});
+
 export const Email = styled("a", {
   display: "block",
   fontWeight: 500,
