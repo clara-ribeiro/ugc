@@ -1,0 +1,127 @@
+import { styled } from "@/styles/stitches.config";
+
+export const Section = styled("header", {
+  maxWidth: "$containerContent",
+  margin: "0 auto",
+  px: "$md",
+  paddingTop: "$2xl",
+  paddingBottom: "$3xl",
+  "@md": {
+    px: "$lg",
+    paddingTop: "$3xl",
+    paddingBottom: "$4xl",
+  },
+});
+
+export const Layout = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "$2xl",
+  alignItems: "center",
+  "@md": {
+    flexDirection: "row",
+  },
+});
+
+export const Copy = styled("div", {
+  flex: 1,
+  textAlign: "left",
+});
+
+export const Title = styled("h1", {
+  fontFamily: "$heading",
+  fontSize: "2.125rem",
+  fontWeight: 500,
+  letterSpacing: "-0.02em",
+  lineHeight: 1.15,
+  marginBottom: "$lg",
+  overflowWrap: "break-word",
+  "@sm": {
+    fontSize: "2.5rem",
+  },
+  "@md": {
+    fontSize: "$h1",
+  },
+});
+
+export const Emphasis = styled("span", {
+  fontStyle: "italic",
+  color: "$loContrast",
+});
+
+export const Description = styled("p", {
+  fontSize: "$h4",
+  color: "$loContrast",
+  maxWidth: "36rem",
+  lineHeight: 1.7,
+  marginBottom: "$xl",
+  "@md": {
+    fontSize: "1.25rem",
+  },
+});
+
+export const Actions = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "stretch",
+  gap: "$md",
+  width: "100%",
+  "@sm": {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "auto",
+    gap: "$lg",
+  },
+});
+
+export const PhotoWrap = styled("div", {
+  width: "100%",
+  maxWidth: "22rem",
+  flexShrink: 0,
+  "@md": {
+    maxWidth: "none",
+    width: "22rem",
+  },
+  "@lg": {
+    width: "25rem",
+  },
+});
+
+export const PhotoFrame = styled("div", {
+  position: "relative",
+  aspectRatio: "3 / 4",
+  borderRadius: "$2xl",
+  overflow: "hidden",
+  border: "1px solid $border",
+  boxShadow: "$sm",
+  backgroundColor: "#F3F4F6",
+  "@md": {
+    aspectRatio: "1 / 1",
+  },
+  "@lg": {
+    aspectRatio: "4 / 5",
+  },
+  "& img": {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+  },
+});
+
+export const Credentials = styled("div", {
+  marginTop: "$3xl",
+  display: "flex",
+  alignItems: "center",
+  gap: "$lg",
+  flexWrap: "wrap",
+  color: "$loContrast",
+  fontFamily: "$mono",
+  fontSize: "$caption",
+  borderTop: "1px solid $border",
+  paddingTop: "$xl",
+});
+
+export const Divider = styled("span", {
+  color: "$loContrast",
+});
