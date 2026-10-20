@@ -1,4 +1,4 @@
-import { styled } from "@/styles/stitches.config";
+import { pulseDot, styled } from "@/styles/stitches.config";
 
 export const Badge = styled("div", {
   display: "inline-flex",
@@ -17,6 +17,10 @@ export const Dot = styled("span", {
   size: "0.5rem",
   borderRadius: "$full",
   backgroundColor: "$success",
+  animation: `${pulseDot} 2s ease-out infinite`,
+  "@motionReduce": {
+    animation: "none",
+  },
 });
 
 export const Label = styled("span", {

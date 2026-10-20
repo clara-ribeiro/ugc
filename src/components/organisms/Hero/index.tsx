@@ -6,6 +6,7 @@ import { landing, mailtoHref } from "@/content/landing";
 import {
   Actions,
   Copy,
+  Corner,
   Credentials,
   Description,
   Emphasis,
@@ -36,6 +37,10 @@ export default function Hero() {
           </Actions>
         </Copy>
         <PhotoWrap>
+          <Corner pos="tl" />
+          <Corner pos="tr" />
+          <Corner pos="bl" />
+          <Corner pos="br" />
           <PhotoFrame>
             <Image
               src={hero.photoSrc}

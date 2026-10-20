@@ -21,9 +21,11 @@ export const Root = styled("article", {
         color: "$textPrimary",
         border: "1px solid $border",
         boxShadow: "$sm",
-        transition: "border-color $slow ease",
+        transition: "border-color $fast ease, transform $normal ease, box-shadow $fast ease",
         "&:hover": {
-          borderColor: "$borderHover",
+          borderColor: "$textPrimary",
+          transform: "translateY(-3px)",
+          boxShadow: "$md",
         },
       },
     },

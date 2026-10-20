@@ -1,7 +1,8 @@
 import SectionDescription from "@/components/atoms/SectionDescription";
 import SectionTitle from "@/components/atoms/SectionTitle";
+import FaqItem from "@/components/molecules/FaqItem";
 import { landing } from "@/content/landing";
-import { Answer, Intro, Item, List, Question, Section } from "./styles";
+import { Intro, List, Section } from "./styles";
 
 export default function FaqSection() {
   const faq = landing.faq;
@@ -14,10 +15,7 @@ export default function FaqSection() {
       </Intro>
       <List>
         {faq.items.map((item, index) => (
-          <Item key={item.question} open={index === 0}>
-            <Question>{item.question}</Question>
-            <Answer>{item.answer}</Answer>
-          </Item>
+          <FaqItem key={item.question} item={item} defaultOpen={index === 0} />
         ))}
       </List>
     </Section>

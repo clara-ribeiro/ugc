@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavLink from "@/components/atoms/NavLink";
 import { landing, mailtoHref } from "@/content/landing";
 import {
@@ -14,6 +14,7 @@ import {
   MenuButton,
   MenuLink,
   MenuPanel,
+  Progress,
   SkipLink,
 } from "./styles";
 
@@ -30,9 +31,31 @@ export default function SiteHeader() {
     menuClose,
   } = landing.nav;
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(1, y / max) : 0);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <Bar aria-label={ariaLabel}>
+    <Bar aria-label={ariaLabel} scrolled={scrolled} open={open}>
       <SkipLink href="#main">{skipToContent}</SkipLink>
       <Inner>
         <Brand href="/" aria-label={`${landing.person.name} home`}>
@@ -84,6 +107,7 @@ export default function SiteHeader() {
           ))}
         </MenuPanel>
       ) : null}
+      <Progress style={{ transform: `scaleX(${progress})` }} aria-hidden />
     </Bar>
   );
 }

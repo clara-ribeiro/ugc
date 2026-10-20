@@ -119,12 +119,16 @@ export const globalStyles = globalCss({
     scrollBehavior: "smooth",
     textSizeAdjust: "100%",
     overflowX: "hidden",
+    scrollPaddingTop: "4.5rem",
   },
   body: {
     margin: 0,
     minHeight: "100dvh",
     overflowX: "hidden",
     backgroundColor: "$bg",
+    backgroundImage:
+      "linear-gradient(rgba(26, 26, 26, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 26, 26, 0.03) 1px, transparent 1px)",
+    backgroundSize: "3rem 3rem",
     color: "$textPrimary",
     fontFamily: "$body",
     fontSize: "$body1",
@@ -176,3 +180,15 @@ export const globalStyles = globalCss({
     },
   },
 });
+
+export const pulseDot = keyframes({
+  "0%": { boxShadow: "0 0 0 0 rgba(22, 163, 74, 0.45)" },
+  "70%": { boxShadow: "0 0 0 0.5rem rgba(22, 163, 74, 0)" },
+  "100%": { boxShadow: "0 0 0 0 rgba(22, 163, 74, 0)" },
+});
+
+export const blinkCaret = keyframes({
+  "0%, 49%": { opacity: 1 },
+  "50%, 100%": { opacity: 0 },
+});
+

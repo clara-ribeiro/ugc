@@ -36,13 +36,19 @@ export const Step = styled("li", {
   border: "1px solid $border",
   borderRadius: "$xl",
   padding: "$xl",
+  transition: "border-color $fast ease, transform $normal ease",
+  "&:hover": {
+    borderColor: "$textPrimary",
+    transform: "translateY(-2px)",
+  },
 });
 
 export const Index = styled("span", {
   display: "block",
   fontFamily: "$mono",
   fontSize: "$caption",
-  color: "$loContrast",
+  color: "$accent",
+  letterSpacing: "0.08em",
   marginBottom: "$sm",
 });
 

@@ -6,7 +6,8 @@ export const Root = styled("footer", {
   "@md": {
     px: "$lg",
   },
-  backgroundColor: "$surface",
+  backgroundColor: "rgba(255, 255, 255, 0.72)",
+  backdropFilter: "blur(12px)",
   borderTop: "1px solid $border",
   textAlign: "center",
 });

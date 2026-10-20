@@ -75,6 +75,7 @@ export const Actions = styled("div", {
 });
 
 export const PhotoWrap = styled("div", {
+  position: "relative",
   width: "100%",
   maxWidth: "22rem",
   flexShrink: 0,
@@ -87,10 +88,47 @@ export const PhotoWrap = styled("div", {
   },
 });
 
+export const Corner = styled("span", {
+  position: "absolute",
+  width: "0.75rem",
+  height: "0.75rem",
+  zIndex: 1,
+  pointerEvents: "none",
+  borderColor: "$textPrimary",
+  variants: {
+    pos: {
+      tl: {
+        top: "-3px",
+        left: "-3px",
+        borderTop: "1.5px solid currentColor",
+        borderLeft: "1.5px solid currentColor",
+      },
+      tr: {
+        top: "-3px",
+        right: "-3px",
+        borderTop: "1.5px solid currentColor",
+        borderRight: "1.5px solid currentColor",
+      },
+      bl: {
+        bottom: "-3px",
+        left: "-3px",
+        borderBottom: "1.5px solid currentColor",
+        borderLeft: "1.5px solid currentColor",
+      },
+      br: {
+        bottom: "-3px",
+        right: "-3px",
+        borderBottom: "1.5px solid currentColor",
+        borderRight: "1.5px solid currentColor",
+      },
+    },
+  },
+});
+
 export const PhotoFrame = styled("div", {
   position: "relative",
   aspectRatio: "3 / 4",
-  borderRadius: "$2xl",
+  borderRadius: "$md",
   overflow: "hidden",
   border: "1px solid $border",
   boxShadow: "$sm",

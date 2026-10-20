@@ -3,9 +3,11 @@ import { styled } from "@/styles/stitches.config";
 export const StyledNavLink = styled("a", {
   position: "relative",
   color: "$loContrast",
-  fontFamily: "$body",
-  fontSize: "$body2",
+  fontFamily: "$mono",
+  fontSize: "$caption",
   fontWeight: 500,
+  letterSpacing: "0.06em",
+  textTransform: "uppercase",
   transition: "color $fast ease",
   "&::after": {
     content: '""',

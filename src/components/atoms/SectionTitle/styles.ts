@@ -7,4 +7,14 @@ export const StyledSectionTitle = styled("h2", {
   letterSpacing: "-0.02em",
   color: "$textPrimary",
   marginBottom: "$sm",
+  "&::before": {
+    content: '"/"',
+    display: "inline-block",
+    marginRight: "$sm",
+    fontFamily: "$mono",
+    fontSize: "$body2",
+    fontStyle: "normal",
+    color: "$accent",
+    letterSpacing: 0,
+  },
 });

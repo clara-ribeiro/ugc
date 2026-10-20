@@ -9,12 +9,13 @@ import ProcessSection from "@/components/organisms/ProcessSection";
 import ServicesSection from "@/components/organisms/ServicesSection";
 import SiteFooter from "@/components/organisms/SiteFooter";
 import SiteHeader from "@/components/organisms/SiteHeader";
+import { Main } from "./styles";
 
 export default function HomeTemplate() {
   return (
     <>
       <SiteHeader />
-      <main id="main">
+      <Main id="main">
         <Hero />
         <AboutSection />
         <ArchiveSection />
@@ -22,7 +23,7 @@ export default function HomeTemplate() {
         <ProcessSection />
         <ServicesSection />
         <FaqSection />
-      </main>
+      </Main>
       <SiteFooter />
     </>
   );

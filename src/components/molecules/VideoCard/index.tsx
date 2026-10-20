@@ -17,7 +17,7 @@ export type VideoCardProps = {
 export default function VideoCard({ item }: VideoCardProps) {
   return (
     <Root>
-      <Frame>
+      <Frame data-frame>
         <Placeholder>
           <Product>{item.product}</Product>
           <span>

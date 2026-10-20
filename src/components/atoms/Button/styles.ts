@@ -12,15 +12,19 @@ export const StyledButton = styled("a", {
   fontSize: "$body2",
   fontWeight: 500,
   textAlign: "center",
-  transition: "background-color $fast ease, color $fast ease, border-color $fast ease",
+  transition:
+    "background-color $fast ease, color $fast ease, border-color $fast ease, transform $fast ease, box-shadow $fast ease",
   variants: {
     variant: {
       solid: {
         backgroundColor: "$textPrimary",
         color: "$inverse",
         boxShadow: "$sm",
+        letterSpacing: "0.01em",
         "&:hover": {
           backgroundColor: "#000000",
+          transform: "translateY(-1px)",
+          boxShadow: "$md",
         },
       },
       outline: {

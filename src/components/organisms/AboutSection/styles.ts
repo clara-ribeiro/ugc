@@ -57,6 +57,11 @@ export const Niche = styled("article", {
   borderRadius: "$xl",
   padding: "$xl",
   boxShadow: "$sm",
+  transition: "border-color $fast ease, transform $normal ease",
+  "&:hover": {
+    borderColor: "$textPrimary",
+    transform: "translateY(-2px)",
+  },
 });
 
 export const NicheTitle = styled("h3", {

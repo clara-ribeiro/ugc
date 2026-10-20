@@ -6,6 +6,12 @@ export const Root = styled("article", {
   borderRadius: "$xl",
   border: "1px solid $border",
   boxShadow: "$sm",
+  transition: "border-color $fast ease, transform $normal ease, box-shadow $fast ease",
+  "&:hover": {
+    borderColor: "$textPrimary",
+    transform: "translateY(-3px)",
+    boxShadow: "$md",
+  },
 });
 
 export const Header = styled("header", {
