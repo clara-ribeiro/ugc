@@ -46,9 +46,6 @@ export const Grid = styled("div", {
   "@md": {
     gridTemplateColumns: "repeat(2, 1fr)",
   },
-  "@lg": {
-    gridTemplateColumns: "repeat(3, 1fr)",
-  },
 });
 
 export const Niche = styled("article", {

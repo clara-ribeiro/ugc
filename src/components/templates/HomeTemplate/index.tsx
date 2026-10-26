@@ -5,6 +5,7 @@ import ArchiveSection from "@/components/organisms/ArchiveSection";
 import FaqSection from "@/components/organisms/FaqSection";
 import Hero from "@/components/organisms/Hero";
 import JournalSection from "@/components/organisms/JournalSection";
+import MethodSection from "@/components/organisms/MethodSection";
 import ProcessSection from "@/components/organisms/ProcessSection";
 import ServicesSection from "@/components/organisms/ServicesSection";
 import SiteFooter from "@/components/organisms/SiteFooter";
@@ -19,6 +20,7 @@ export default function HomeTemplate() {
         <Hero />
         <AboutSection />
         <ArchiveSection />
+        <MethodSection />
         <JournalSection />
         <ProcessSection />
         <ServicesSection />

@@ -27,3 +27,6 @@ yarn-error.log*
 
 *.tsbuildinfo
 next-env.d.ts
+
+# Camera masters. The landing serves compressed files in public/videos/web.
+public/videos/**/*.mov

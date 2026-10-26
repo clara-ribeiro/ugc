@@ -19,11 +19,13 @@ export const Intro = styled("div", {
 export const Grid = styled("div", {
   display: "grid",
   gridTemplateColumns: "1fr",
-  gap: "$xl",
+  gap: "$2xl $xl",
+  justifyItems: "center",
   "@md": {
     gridTemplateColumns: "repeat(2, 1fr)",
+    justifyItems: "stretch",
   },
-  "@xl": {
-    gridTemplateColumns: "repeat(4, 1fr)",
+  "@lg": {
+    gridTemplateColumns: "repeat(3, 1fr)",
   },
 });

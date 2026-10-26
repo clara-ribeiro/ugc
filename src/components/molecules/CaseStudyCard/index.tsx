@@ -20,10 +20,10 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
           <Strong>Hook:</Strong> {item.hook}
         </p>
         <p>
-          <Strong>Visual:</Strong> {item.visual}
+          <Strong>On-screen:</Strong> {item.visual}
         </p>
         <p>
-          <Strong>CTA:</Strong> {item.cta}
+          <Strong>Ask:</Strong> {item.cta}
         </p>
       </Body>
     </Root>

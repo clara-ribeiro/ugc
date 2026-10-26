@@ -110,8 +110,23 @@ export function buildLandingJsonLd(): JsonLd {
     })),
   });
 
+  const videos = landing.archive.items.map((item) =>
+    omitEmpty({
+      "@type": "VideoObject",
+      "@id": `${siteUrl}#${item.id}`,
+      name: `${item.product}: ${item.title}`,
+      description: item.description,
+      contentUrl: absoluteUrl(item.src),
+      embedUrl: `${siteUrl}#${landing.archive.id}`,
+      duration: item.durationIso,
+      inLanguage: "en",
+      uploadDate: "2026-10-26",
+      creator: { "@id": personId },
+    }),
+  );
+
   return {
     "@context": "https://schema.org",
-    "@graph": [person, service, website, webPage, faq],
+    "@graph": [person, service, website, webPage, faq, ...videos],
   };
 }
