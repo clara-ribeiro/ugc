@@ -1,30 +1,32 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import PhoneFrame from "@/components/molecules/PhoneFrame";
+import { Playback, Screen } from "@/components/molecules/PhoneFrame/styles";
 import type { VideoItem } from "@/content/landing";
-import {
-  Category,
-  Description,
-  Earpiece,
-  HomeBar,
-  Hook,
-  Meta,
-  Phone,
-  Playback,
-  Root,
-  Screen,
-  SideButton,
-  Title,
-} from "./styles";
+import { Category, Description, Hook, Meta, Root, Title } from "./styles";
+
+export type VideoOpenDetail = {
+  item: VideoItem;
+  origin: DOMRect;
+  currentTime: number;
+};
 
 export type VideoCardProps = {
   item: VideoItem;
+  lifted?: boolean;
+  priority?: boolean;
+  onOpen: (detail: VideoOpenDetail) => void;
 };
 
-export default function VideoCard({ item }: VideoCardProps) {
+export default function VideoCard({
+  item,
+  lifted = false,
+  priority = false,
+  onOpen,
+}: VideoCardProps) {
+  const phoneRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const userPaused = useRef(false);
-  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -32,69 +34,85 @@ export default function VideoCard({ item }: VideoCardProps) {
       return;
     }
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
+    if (lifted) {
+      node.pause();
       return;
     }
 
-    const observer = new IntersectionObserver(
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const warm = new IntersectionObserver(
       ([entry]) => {
-        if (!entry || userPaused.current) {
+        if (entry?.isIntersecting) {
+          node.preload = "auto";
+        }
+      },
+      { rootMargin: "280px 0px" },
+    );
+    warm.observe(node);
+
+    if (reduceMotion) {
+      return () => warm.disconnect();
+    }
+
+    const play = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) {
           return;
         }
         if (entry.isIntersecting) {
+          node.preload = "auto";
           void node.play().catch(() => undefined);
         } else {
           node.pause();
         }
       },
-      { threshold: 0.6, rootMargin: "-12% 0px -12% 0px" },
+      { threshold: 0.45, rootMargin: "-8% 0px -8% 0px" },
     );
+    play.observe(node);
 
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      warm.disconnect();
+      play.disconnect();
+    };
+  }, [lifted]);
 
-  const togglePlayback = () => {
-    const node = videoRef.current;
-    if (!node) {
+  const open = () => {
+    const phone = phoneRef.current;
+    const video = videoRef.current;
+    if (!phone) {
       return;
     }
-    if (node.paused) {
-      userPaused.current = false;
-      void node.play().catch(() => undefined);
-    } else {
-      userPaused.current = true;
-      node.pause();
-    }
+    onOpen({
+      item,
+      origin: phone.getBoundingClientRect(),
+      currentTime: video?.currentTime ?? 0,
+    });
   };
 
   return (
     <Root>
-      <Phone>
-        <Earpiece aria-hidden />
-        <SideButton pos="volUp" aria-hidden />
-        <SideButton pos="volDown" aria-hidden />
-        <SideButton pos="power" aria-hidden />
+      <PhoneFrame frameRef={phoneRef} lifted={lifted}>
         <Screen
+          as="button"
           type="button"
-          aria-label={playing ? `Pause ${item.product} video` : `Play ${item.product} video`}
-          onClick={togglePlayback}
+          clickable
+          aria-label={`Open ${item.product} video`}
+          aria-haspopup="dialog"
+          onClick={open}
         >
           <Playback
             ref={videoRef}
             src={item.src}
+            poster={item.poster}
             muted
             loop
             playsInline
-            preload="metadata"
+            preload={priority ? "auto" : "metadata"}
             disablePictureInPicture
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
           />
         </Screen>
-        <HomeBar aria-hidden />
-      </Phone>
+      </PhoneFrame>
       <Meta>
         <Category>
           {item.category} · {item.product} · {item.duration}

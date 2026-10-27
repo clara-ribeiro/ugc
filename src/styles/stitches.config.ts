@@ -71,6 +71,7 @@ export const {
     },
     zIndices: {
       sticky: "200",
+      dialog: "400",
       skipLink: "600",
     },
     transitions: {

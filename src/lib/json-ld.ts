@@ -117,6 +117,7 @@ export function buildLandingJsonLd(): JsonLd {
       name: `${item.product}: ${item.title}`,
       description: item.description,
       contentUrl: absoluteUrl(item.src),
+      thumbnailUrl: absoluteUrl(item.poster),
       embedUrl: `${siteUrl}#${landing.archive.id}`,
       duration: item.durationIso,
       inLanguage: "en",

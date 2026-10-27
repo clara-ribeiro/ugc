@@ -3,6 +3,11 @@ export type NavItem = {
   label: string;
 };
 
+export type StrategyBeat = {
+  label: string;
+  body: string;
+};
+
 export type VideoItem = {
   id: string;
   category: string;
@@ -14,6 +19,10 @@ export type VideoItem = {
   description: string;
   formatLabel: string;
   src: string;
+  poster: string;
+  job: string;
+  spine: string;
+  strategy: StrategyBeat[];
 };
 
 export type CaseStudy = {
@@ -186,6 +195,13 @@ export const landing = {
     title: "The Archive.",
     description:
       "Finished ads for Cursor, Notion AI, Wise, Claude, Key Waves, and Logitech.",
+    modal: {
+      close: "Close",
+      closeAria: "Close video",
+      jobLabel: "Job",
+      spineLabel: "Spine",
+      strategyLabel: "Conversion strategy",
+    },
     items: [
       {
         id: "video-2",
@@ -197,8 +213,29 @@ export const landing = {
         hook: "Here is exactly how I cut my sprint planning from hours down to 15 minutes.",
         formatLabel: "9:16",
         src: "/videos/web/notion.mp4",
+        poster: "/videos/web/notion.webp",
         description:
           "A workflow ad: messy meeting notes in, a full task list out—without typing tickets by hand.",
+        job: "A workflow ad for product teams who still turn meetings into tickets by hand.",
+        spine: "Split-screen hook → meeting pain → Notion AI proof → on-camera ask",
+        strategy: [
+          {
+            label: "Hook",
+            body: "“Hours down to 15 minutes” is spoken, written on screen, and shown as stressed typing versus tea. The promise lands with the sound off.",
+          },
+          {
+            label: "Pain",
+            body: "Writing tickets from a chaotic meeting is named as the worst part of the week—then a fast fake Meet makes the cost visible.",
+          },
+          {
+            label: "Proof",
+            body: "The transcript goes into Notion AI, a command is typed, tasks appear. Zero manual typing is the only claim, and it is on screen while it happens.",
+          },
+          {
+            label: "Ask",
+            body: "On camera, in the chair: try Notion AI. The next tap is the landing page, not a comment.",
+          },
+        ],
       },
       {
         id: "video-5",
@@ -210,8 +247,25 @@ export const landing = {
         hook: "Typing or floating?",
         formatLabel: "9:16",
         src: "/videos/web/key-waves.mp4",
+        poster: "/videos/web/key-waves.webp",
         description:
-        "A short brand loop: ocean, the Key Waves name filled by the keyboard, then the product itself.",
+          "A short brand loop: ocean, the Key Waves name filled by the keyboard, then the product itself.",
+        job: "A 12-second brand loop for awareness—organic or paid—not a hard sell.",
+        spine: "Atmosphere → name as mask → product → question",
+        strategy: [
+          {
+            label: "Watch first",
+            body: "No talking head. Ocean holds the scroll long enough for the name to appear.",
+          },
+          {
+            label: "Name = product",
+            body: "The Key Waves wordmark fills with a photo of the keyboard. You learn the name by seeing the object inside it.",
+          },
+          {
+            label: "Ask",
+            body: "Type-on: typing or floating? A line people can repeat. The tap is curiosity, not a checkout.",
+          },
+        ],
       },
       {
         id: "video-1",
@@ -223,8 +277,29 @@ export const landing = {
         hook: "Stop debugging legacy code manually. Do this instead.",
         formatLabel: "9:16",
         src: "/videos/web/cursor.mp4",
+        poster: "/videos/web/cursor.webp",
         description:
           "A DevTools ad: the pain of a huge error log, then Cursor fixing it from the project’s own context.",
+        job: "A bottom-of-funnel DevTools ad for developers stuck in error logs.",
+        spine: "Command hook → hours of pain → Command-K proof → finger-down ask",
+        strategy: [
+          {
+            label: "Hook",
+            body: "“Stop debugging legacy code manually. Do this instead.” Spoken, on screen, and timed with a turn to camera.",
+          },
+          {
+            label: "Pain",
+            body: "Staring at a massive error log for one broken flow. The cost is hours, named on screen.",
+          },
+          {
+            label: "Proof",
+            body: "Cursor reads the project, Command-K, the fix. No Stack Overflow tabs—shown, not claimed in a vacuum.",
+          },
+          {
+            label: "Ask",
+            body: "Same frame as the rant, pointing down: try Cursor for free. Built for paid social.",
+          },
+        ],
       },
       {
         id: "video-3",
@@ -236,8 +311,29 @@ export const landing = {
         hook: "If you're a software engineer, you are wasting money on every single paycheck.",
         formatLabel: "9:16",
         src: "/videos/web/wise.mp4",
+        poster: "/videos/web/wise.webp",
         description:
           "A trust ad for international payroll: banks take a cut; Wise shows the real rate and the fee up front.",
+        job: "A trust ad for engineers paid in dollars through local banks.",
+        spine: "Pattern interrupt → fee pain → app proof → phone-up ask",
+        strategy: [
+          {
+            label: "Hook",
+            body: "A grimace at a notification, then to camera: you are wasting money on every paycheck. Lifestyle first, then the claim.",
+          },
+          {
+            label: "Pain",
+            body: "A jump-cut close-up. Traditional banks and hidden fees eating up to 5%. The number is on screen.",
+          },
+          {
+            label: "Proof",
+            body: "POV of the Wise app: mid-market rate, fee shown up front. Transparency is the demo.",
+          },
+          {
+            label: "Ask",
+            body: "Phone raised with the logo. Set up Wise today—minutes, not a lecture.",
+          },
+        ],
       },
       {
         id: "video-4",
@@ -249,8 +345,29 @@ export const landing = {
         hook: "Why I completely stopped using ChatGPT for coding and switched to Claude.",
         formatLabel: "9:16",
         src: "/videos/web/claude.mp4",
+        poster: "/videos/web/claude.webp",
         description:
           "A comparison ad: ChatGPT goes lazy on a large codebase; Claude writes the component and previews the UI.",
+        job: "A mid-funnel comparison for developers choosing a coding model.",
+        spine: "Logo split → lazy-code pain → Artifacts proof → switch ask",
+        strategy: [
+          {
+            label: "Hook",
+            body: "“Why I completely stopped using ChatGPT for coding.” Two logos on the TV so the debate is visible before a word lands.",
+          },
+          {
+            label: "Pain",
+            body: "ChatGPT gets lazy on a large codebase and leaves “insert your code here.” The break in flow is the enemy, not the brand.",
+          },
+          {
+            label: "Proof",
+            body: "Claude writes the full React component and Artifacts renders the UI beside the code. Preview is the product.",
+          },
+          {
+            label: "Ask",
+            body: "TV on Claude only. Make the switch—level up your dev stack, arrow down.",
+          },
+        ],
       },
       {
         id: "video-6",
@@ -262,8 +379,25 @@ export const landing = {
         hook: "Come work with me in 15 seconds.",
         formatLabel: "9:16",
         src: "/videos/web/keyboard-and-mouse.mp4",
+        poster: "/videos/web/keyboard-and-mouse.webp",
         description:
           "A morning at the desk with the Lift and Wave Keys—real clicks, real typing, then five hours later, zero wrist pain.",
+        job: "A native desk film for hardware. Sound and time do the selling.",
+        spine: "ASMR macros → clock → timelapse → zero-pain end card",
+        strategy: [
+          {
+            label: "Hook",
+            body: "Come work with me in 15 seconds. The Lift hits the desk. Sound first, no rant.",
+          },
+          {
+            label: "Proof",
+            body: "Clicks, scroll, wave-profile typing. A clock from 8:00 to 8:30 AM makes the products feel used, not posed.",
+          },
+          {
+            label: "Ask",
+            body: "The morning speeds up. End card: 5 hours later. Zero wrist pain. Link in the caption—the product is the CTA.",
+          },
+        ],
       },
     ] satisfies VideoItem[],
   },
