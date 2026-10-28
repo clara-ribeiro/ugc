@@ -1,6 +1,7 @@
-import Button from "@/components/atoms/Button";
+"use client";
+
+import ContactActions from "@/components/molecules/ContactActions";
 import type { ServicePackage } from "@/content/landing";
-import { mailtoHref } from "@/content/landing";
 import {
   Badge,
   Bullet,
@@ -39,12 +40,13 @@ export default function ServiceCard({ item }: ServiceCardProps) {
           </Feature>
         ))}
       </FeatureList>
-      <Button
-        href={mailtoHref(item.mailtoSubject)}
-        variant={featured ? "inverse" : "outline"}
-      >
-        {item.ctaLabel}
-      </Button>
+      <ContactActions
+        packageId={item.id}
+        primaryLabel={item.ctaLabel}
+        primaryVariant={featured ? "inverse" : "outline"}
+        stack
+        tone={featured ? "inverse" : undefined}
+      />
     </Root>
   );
 }

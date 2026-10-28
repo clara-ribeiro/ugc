@@ -41,29 +41,8 @@ export const Credits = styled("div", {
   textAlign: "left",
 });
 
-export const Email = styled("a", {
-  display: "block",
-  fontWeight: 500,
-  fontSize: "$body2",
-  color: "$textPrimary",
+export const Actions = styled("div", {
   marginBottom: "$3xl",
-  position: "relative",
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    left: 0,
-    width: "100%",
-    height: "1px",
-    bottom: "-2px",
-    backgroundColor: "currentColor",
-    transform: "scaleX(0)",
-    transformOrigin: "bottom right",
-    transition: "transform $normal ease-out",
-  },
-  "&:hover::after": {
-    transform: "scaleX(1)",
-    transformOrigin: "bottom left",
-  },
 });
 
 export const Copyright = styled("p", {

@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import NavLink from "@/components/atoms/NavLink";
-import { landing, mailtoHref } from "@/content/landing";
+import ContactActions from "@/components/molecules/ContactActions";
+import { useContact } from "@/components/organisms/ContactModal/ContactContext";
+import { landing } from "@/content/landing";
 import {
   Bar,
   Brand,
@@ -30,6 +32,7 @@ export default function SiteHeader() {
     menuOpen,
     menuClose,
   } = landing.nav;
+  const { openContact } = useContact();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -93,7 +96,14 @@ export default function SiteHeader() {
             )}
           </svg>
         </MenuButton>
-        <Contact href={mailtoHref()} aria-label={ctaAriaLabel}>
+        <Contact
+          type="button"
+          onClick={() => {
+            setOpen(false);
+            openContact();
+          }}
+          aria-label={ctaAriaLabel}
+        >
           <CtaShort>{ctaShort}</CtaShort>
           <CtaFull>{ctaLabel}</CtaFull>
         </Contact>
@@ -105,6 +115,7 @@ export default function SiteHeader() {
               {item.label}
             </MenuLink>
           ))}
+          <ContactActions stack onNavigate={() => setOpen(false)} />
         </MenuPanel>
       ) : null}
       <Progress style={{ transform: `scaleX(${progress})` }} aria-hidden />

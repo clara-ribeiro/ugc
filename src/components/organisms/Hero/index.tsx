@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Button from "@/components/atoms/Button";
 import StatusBadge from "@/components/atoms/StatusBadge";
+import ContactActions from "@/components/molecules/ContactActions";
 import WorkCredits from "@/components/molecules/WorkCredits";
-import { landing, mailtoHref } from "@/content/landing";
+import { landing } from "@/content/landing";
 import {
   Actions,
   Copy,
@@ -30,7 +31,7 @@ export default function Hero() {
           </Title>
           <Description>{hero.description}</Description>
           <Actions>
-            <Button href={mailtoHref(hero.primarySubject)}>{hero.primaryCta}</Button>
+            <ContactActions primaryLabel={hero.primaryCta} />
             <Button href="#work" variant="ghost">
               {hero.secondaryCta}
             </Button>

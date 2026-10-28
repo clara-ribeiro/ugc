@@ -104,7 +104,12 @@ export const Links = styled("div", {
   },
 });
 
-export const Contact = styled("a", {
+export const Contact = styled("button", {
+  appearance: "none",
+  border: 0,
+  backgroundColor: "transparent",
+  padding: 0,
+  cursor: "pointer",
   fontFamily: "$heading",
   fontStyle: "italic",
   fontSize: "$body2",

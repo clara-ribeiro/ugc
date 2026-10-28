@@ -127,9 +127,9 @@ export const landing = {
       { href: "#services", label: "Services" },
       { href: "#faq", label: "FAQ" },
     ] satisfies NavItem[],
-    ctaLabel: "Get in touch →",
-    ctaShort: "Email",
-    ctaAriaLabel: "Email Clara to start a brief",
+    ctaLabel: "Get in touch",
+    ctaShort: "Contact",
+    ctaAriaLabel: "Open the contact form",
   },
   hero: {
     titleId: "hero-heading",
@@ -139,7 +139,7 @@ export const landing = {
     titleTrail: "into high-converting video ads.",
     description:
       "I'm Clara Sousa, a software engineer. I write the script, demo the product on camera, and deliver vertical ads your technical buyers will actually watch. SaaS, DevTools, AI, and hardware.",
-    primaryCta: "Start a brief",
+    primaryCta: "Get in touch",
     primarySubject: "Brief: UGC video",
     secondaryCta: "Watch the work",
     photoAlt:
@@ -667,9 +667,41 @@ export const landing = {
       "Tech UGC by a software engineer. English-language ads for SaaS, DevTools, AI, and hardware.",
     copyright: "© 2026 Clara Sousa. All rights reserved.",
   },
+  contact: {
+    primaryCta: "Get in touch",
+    emailCta: "Or send an email",
+    copyAria: "Copy email address",
+    copied: "Email copied",
+    modalTitle: "Start a brief",
+    modalDescription: "Tell me the product and the goal. I reply by email.",
+    close: "Close",
+    closeAria: "Close contact form",
+    nameLabel: "Name",
+    emailLabel: "Work email",
+    companyLabel: "Company",
+    productLabel: "Product or site",
+    packageLabel: "Package",
+    packagePlaceholder: "Not sure yet",
+    messageLabel: "Brief",
+    messagePlaceholder: "Audience, offer, deadline, and a docs or Loom link if you have one.",
+    submit: "Send brief",
+    sending: "Sending your brief…",
+    sendingHint: "This can take a few seconds. Don’t close this window.",
+    successTitle: "Brief received",
+    success:
+      "I’ll reply to the work email you entered, usually within one business day.",
+    successClose: "Done",
+    errorTitle: "Couldn’t send the brief",
+    error: "Try again, or send the same details from your email app so nothing is lost.",
+    errorRetry: "Try again",
+    errorMailto: "Send by email",
+  },
 } as const;
 
-export function mailtoHref(subject?: string) {
-  const encoded = subject ? `?subject=${encodeURIComponent(subject)}` : "";
-  return `mailto:${CONTACT_EMAIL}${encoded}`;
+export function mailtoHref(subject?: string, body?: string) {
+  const parts = [
+    subject ? `subject=${encodeURIComponent(subject)}` : "",
+    body ? `body=${encodeURIComponent(body)}` : "",
+  ].filter(Boolean);
+  return `mailto:${CONTACT_EMAIL}${parts.length ? `?${parts.join("&")}` : ""}`;
 }
