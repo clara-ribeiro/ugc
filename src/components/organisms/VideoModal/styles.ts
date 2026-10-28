@@ -263,34 +263,3 @@ export const BeatLabel = styled("span", {
   color: "$textPrimary",
   marginBottom: "2px",
 });
-
-export const PlayerBar = styled("div", {
-  position: "absolute",
-  left: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 3,
-  display: "flex",
-  alignItems: "center",
-  gap: "$xs",
-  padding: "0.45rem 0.4rem 0.55rem",
-  backgroundImage: "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.78) 100%)",
-  pointerEvents: "auto",
-});
-
-export const PlayerBtn = styled("button", {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "2.25rem",
-  height: "2.25rem",
-  flexShrink: 0,
-  border: "1.5px solid #000000",
-  borderRadius: "$md",
-  backgroundColor: "$surface",
-  color: "$textPrimary",
-  cursor: "pointer",
-  "&:hover": {
-    backgroundColor: "$bg",
-  },
-});

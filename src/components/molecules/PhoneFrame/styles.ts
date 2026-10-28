@@ -145,6 +145,13 @@ export const Playback = styled("video", {
         },
         "&::-webkit-media-controls-panel": {
           display: "flex !important",
+          opacity: "1 !important",
+        },
+        "&:fullscreen, &:-webkit-full-screen": {
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#000",
+          objectFit: "contain",
         },
       },
     },
