@@ -6,6 +6,7 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type CSSProperties,
   type MouseEvent,
   type SyntheticEvent,
@@ -44,7 +45,13 @@ const MOVE_MS = 640;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 const FLIGHT_OPACITY = 0.48;
 
-function prefersReducedMotion() {
+function subscribeReducedMotion(onChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+}
+
+function reducedMotionSnapshot() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
@@ -61,7 +68,11 @@ export default function VideoModal({ detail, onClose }: VideoModalProps) {
   const [moved, setMoved] = useState(false);
   const [landed, setLanded] = useState(false);
   const [muted, setMuted] = useState(true);
-  const reducedMotion = typeof window !== "undefined" && prefersReducedMotion();
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    reducedMotionSnapshot,
+    () => false,
+  );
   const settled = reducedMotion || landed;
   const inFlight = reducedMotion || moved;
 

@@ -1,5 +1,6 @@
 const SHEET_NAME = "Leads";
 const TO_EMAIL = "clararibeiro.ugc@gmail.com";
+// Must match CONTACT_WEBHOOK_SECRET in Vercel / .env. Do not commit the real value.
 const SECRET = "replace-with-CONTACT_WEBHOOK_SECRET";
 
 const HEADERS = [

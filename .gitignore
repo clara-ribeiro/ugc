@@ -28,5 +28,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Camera masters. The landing serves compressed files in public/videos/web.
-public/videos/**/*.mov
+# Camera masters stay local. Only compressed files in /web ship with the site.
+/public/videos/*
+!/public/videos/web/
+!/public/videos/web/**

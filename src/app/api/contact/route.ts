@@ -1,6 +1,7 @@
 import { after, NextResponse } from "next/server";
 import { landing } from "@/content/landing";
 import { packageLabelFor, parseContactPayload, type ContactPayload } from "@/lib/contact";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 type SheetStatus = "ok" | "rejected" | "spam" | "email_failed" | "save_failed";
 
@@ -19,22 +20,17 @@ type SheetEvent = {
 };
 
 export async function POST(request: Request) {
+  if (!rateLimit(`contact:${clientIp(request)}`)) {
+    return NextResponse.json(
+      { ok: false, error: landing.contact.error },
+      { status: 429 },
+    );
+  }
+
   let raw: unknown;
   try {
     raw = await request.json();
   } catch {
-    logSheetLater({
-      status: "rejected",
-      error: "Invalid JSON.",
-      receivedAt: new Date().toISOString(),
-      name: "",
-      email: "",
-      company: "",
-      product: "",
-      packageId: "",
-      packageLabel: "",
-      message: "",
-    });
     return NextResponse.json({ ok: false, error: "Invalid JSON." }, { status: 400 });
   }
 
@@ -67,12 +63,6 @@ export async function POST(request: Request) {
 
   const sheet = await postToSheet({ ...event, notifyEmail });
   if (!sheet.ok) {
-    logSheetLater({
-      ...event,
-      status: "save_failed",
-      error: sheet.error,
-      notifyEmail: false,
-    });
     return NextResponse.json(
       { ok: false, error: "Could not save the brief." },
       { status: 502 },
