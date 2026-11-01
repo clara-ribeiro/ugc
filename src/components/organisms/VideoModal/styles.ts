@@ -71,22 +71,32 @@ export const Panel = styled("div", {
   borderRadius: "$2xl",
   boxShadow: "0 24px 80px rgba(0, 0, 0, 0.28)",
   padding: "2.75rem $sm $sm",
-  display: "grid",
-  gridTemplateColumns: "minmax(6.5rem, min(32vw, 12.5rem)) minmax(0, 1fr)",
-  alignItems: "center",
-  gap: "$md",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "stretch",
+  gap: "$sm",
   "@md": {
     maxHeight: "calc(100dvh - 2rem)",
     padding: "3rem $lg $lg",
+    display: "grid",
     gridTemplateColumns: "minmax(9rem, 14rem) minmax(0, 1fr)",
+    alignItems: "center",
     gap: "$xl",
   },
 });
 
 export const Slot = styled("div", {
-  width: "100%",
-  maxHeight: "calc(100dvh - 4.5rem)",
-  justifySelf: "start",
+  flex: "0 0 auto",
+  width: "min(100%, calc((min(46dvh, 24rem) - 2.6rem) * 9 / 16))",
+  maxWidth: "14rem",
+  margin: "0 auto",
+  "@md": {
+    width: "100%",
+    maxWidth: "none",
+    maxHeight: "calc(100dvh - 4.5rem)",
+    margin: 0,
+    justifySelf: "start",
+  },
 });
 
 export const DestPhone = styled("div", {
@@ -137,11 +147,17 @@ export const Traveler = styled("div", {
 export const Copy = styled("div", {
   minWidth: 0,
   minHeight: 0,
+  flex: "1 1 auto",
   display: "flex",
   flexDirection: "column",
-  overflow: "hidden",
+  overflowX: "hidden",
+  overflowY: "auto",
+  overscrollBehavior: "contain",
   overflowWrap: "break-word",
-  paddingRight: "6.25rem",
+  "@md": {
+    overflow: "hidden",
+    paddingRight: "6.25rem",
+  },
   variants: {
     ready: {
       true: {
@@ -156,11 +172,14 @@ export const Copy = styled("div", {
 
 export const Kicker = styled("p", {
   fontFamily: "$mono",
-  fontSize: "$overline",
+  fontSize: "$caption",
   letterSpacing: "0.08em",
   textTransform: "uppercase",
   color: "$loContrast",
   marginBottom: "$xs",
+  "@md": {
+    fontSize: "$overline",
+  },
 });
 
 export const Heading = styled("h2", {
@@ -176,19 +195,17 @@ export const Heading = styled("h2", {
 export const Quote = styled("p", {
   fontFamily: "$heading",
   fontStyle: "italic",
-  fontSize: "$caption",
-  lineHeight: 1.4,
+  fontSize: "$body2",
+  lineHeight: 1.45,
   marginBottom: "$sm",
-  "@md": {
-    fontSize: "$body2",
-  },
 });
 
 export const Facts = styled("div", {
   display: "grid",
+  gridTemplateColumns: "1fr",
   gap: "$sm",
   marginBottom: "$sm",
-  "@sm": {
+  "@md": {
     gridTemplateColumns: "1fr 1fr",
   },
 });
@@ -213,21 +230,20 @@ export const Block = styled("div", {
 
 export const Label = styled("p", {
   fontFamily: "$mono",
-  fontSize: "$overline",
+  fontSize: "$caption",
   letterSpacing: "0.08em",
   textTransform: "uppercase",
   color: "$accent",
   marginBottom: "$xs",
+  "@md": {
+    fontSize: "$overline",
+  },
 });
 
 export const Body = styled("p", {
   color: "$loContrast",
-  fontSize: "$caption",
-  lineHeight: 1.4,
-  "@md": {
-    fontSize: "$body2",
-    lineHeight: 1.45,
-  },
+  fontSize: "$body2",
+  lineHeight: 1.45,
 });
 
 export const Beats = styled("ol", {
@@ -235,9 +251,10 @@ export const Beats = styled("ol", {
   padding: 0,
   margin: "$xs 0 0",
   display: "grid",
-  gridTemplateColumns: "1fr 1fr",
+  gridTemplateColumns: "1fr",
   gap: "$xs",
   "@md": {
+    gridTemplateColumns: "1fr 1fr",
     gap: "$sm",
     margin: "$sm 0 0",
   },
@@ -257,9 +274,12 @@ export const Beat = styled("li", {
 export const BeatLabel = styled("span", {
   display: "block",
   fontFamily: "$mono",
-  fontSize: "$overline",
+  fontSize: "$caption",
   letterSpacing: "0.08em",
   textTransform: "uppercase",
   color: "$textPrimary",
   marginBottom: "2px",
+  "@md": {
+    fontSize: "$overline",
+  },
 });
